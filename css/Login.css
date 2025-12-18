@@ -1,0 +1,55 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Mantener ancho del login */
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+}
+
+/* Logo */
+.logo {
+    width: 90px;
+}
+
+/* Botón naranja */
+:root {
+    --tec-orange: #E38B2D;
+    --tec-orange-dark: #CC7A20;
+}
+
+.btn-primary {
+    background-color: var(--tec-orange);
+    border-color: var(--tec-orange);
+}
+
+.btn-primary:hover {
+    background-color: var(--tec-orange-dark);
+    border-color: var(--tec-orange-dark);
+}
+
+/* Inputs focus */
+.form-control:focus {
+    border-color: var(--tec-orange);
+    box-shadow: 0 0 0 0.2rem rgba(227, 139, 45, 0.25);
+}
+
+/* Links */
+.links a {
+    color: var(--tec-orange);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: var(--tec-orange-dark);
+    text-decoration: underline;
+}
