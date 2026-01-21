@@ -11,13 +11,17 @@
 
     <!-- CSS propio -->
     <link rel="stylesheet" href="/css/Login.css">
+    <script src="/js/login.js"></script>
+
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body">
 
 
 <main class="form-signin w-100 m-auto text-center">
-    <form class="p-4">
+<form class="p-4" id="loginForm">
+
+>
 
 
         <!-- Logo -->
@@ -51,6 +55,12 @@
             <a href="Registro.html" class="d-block">Registrarse</a>
 
         </div>
+
+<!-- Mensaje de error -->
+<div id="loginAlert" class="alert alert-danger d-none" role="alert">
+    ❌ Correo o contraseña incorrectos
+</div>
+
 
         <!-- Botón -->
         <button class="btn btn-primary w-100 py-2" type="submit">
