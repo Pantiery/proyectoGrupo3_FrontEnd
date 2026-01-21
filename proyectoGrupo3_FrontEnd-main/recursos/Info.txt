@@ -1,0 +1,16 @@
+
+
+
+Colores
+
+Naranja: 
+	Normal: #E38B2D
+	Hover: #CC7A20
+
+:root {
+    --tec-orange: #E38B2D;
+    --tec-orange-dark: #CC7A20;
+}
+
+	
+Gris:

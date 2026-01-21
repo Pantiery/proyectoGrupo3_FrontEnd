@@ -1,0 +1,169 @@
+-- =========================================
+-- BASE DE DATOS: BD_TecTicket
+-- =========================================
+
+DROP DATABASE IF EXISTS BD_TecTicket;
+CREATE DATABASE BD_TecTicket
+  DEFAULT CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+
+USE BD_TecTicket;
+
+-- =========================================
+-- TABLA: admin
+-- =========================================
+CREATE TABLE admin (
+  id_admin INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  correo VARCHAR(120) NOT NULL UNIQUE,
+
+  usuario VARCHAR(50) NOT NULL UNIQUE,
+  contrasena VARCHAR(255) NOT NULL,
+  tipo ENUM('ADMIN') NOT NULL DEFAULT 'ADMIN',
+  pregunta_seguridad VARCHAR(255) NOT NULL,
+  respuesta_seguridad VARCHAR(255) NOT NULL
+) ENGINE=InnoDB;
+
+-- =========================================
+-- TABLA: cliente
+-- =========================================
+CREATE TABLE cliente (
+  id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  correo VARCHAR(120) NOT NULL UNIQUE,
+  empresa VARCHAR(120),
+
+  usuario VARCHAR(50) NOT NULL UNIQUE,
+  contrasena VARCHAR(255) NOT NULL,
+  tipo ENUM('CLIENTE') NOT NULL DEFAULT 'CLIENTE',
+  pregunta_seguridad VARCHAR(255) NOT NULL,
+  respuesta_seguridad VARCHAR(255) NOT NULL
+) ENGINE=InnoDB;
+
+-- =========================================
+-- TABLA: departamento
+-- =========================================
+CREATE TABLE departamento (
+  id_departamento INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+
+INSERT INTO departamento (nombre) VALUES
+('Soporte'),
+('Sistemas'),
+('Redes');
+
+-- =========================================
+-- TABLA: especialidad
+-- =========================================
+CREATE TABLE especialidad (
+  id_especialidad INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  descripcion VARCHAR(255),
+  id_departamento INT NOT NULL,
+  FOREIGN KEY (id_departamento)
+    REFERENCES departamento(id_departamento)
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO especialidad (nombre, descripcion, id_departamento) VALUES
+('Hardware', 'Problemas de equipos físicos', 2),
+('Software', 'Aplicaciones y sistemas', 1),
+('Networking', 'Conectividad y redes', 3);
+
+-- =========================================
+-- TABLA: tecnico
+-- =========================================
+CREATE TABLE tecnico (
+  id_tecnico INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  correo VARCHAR(120) NOT NULL UNIQUE,
+  disponible TINYINT(1) NOT NULL DEFAULT 1,
+  id_departamento INT NOT NULL,
+  id_especialidad INT NOT NULL,
+
+  usuario VARCHAR(50) NOT NULL UNIQUE,
+  contrasena VARCHAR(255) NOT NULL,
+  tipo ENUM('TECNICO') NOT NULL DEFAULT 'TECNICO',
+  pregunta_seguridad VARCHAR(255) NOT NULL,
+  respuesta_seguridad VARCHAR(255) NOT NULL,
+
+  FOREIGN KEY (id_departamento)
+    REFERENCES departamento(id_departamento)
+    ON UPDATE CASCADE,
+  FOREIGN KEY (id_especialidad)
+    REFERENCES especialidad(id_especialidad)
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- =========================================
+-- TABLA: estado
+-- =========================================
+CREATE TABLE estado (
+  id_estado INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL UNIQUE,
+  descripcion VARCHAR(255)
+) ENGINE=InnoDB;
+
+INSERT INTO estado (nombre, descripcion) VALUES
+('ABIERTO', 'Ticket creado por el cliente'),
+('EN_CURSO', 'Ticket asignado y en proceso'),
+('CERRADO', 'Ticket finalizado');
+
+-- =========================================
+-- TABLA: ticket
+-- =========================================
+CREATE TABLE ticket (
+  id_ticket INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(150) NOT NULL,
+  descripcion TEXT NOT NULL,
+  fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+  prioridad ENUM('Baja','Media','Alta') NOT NULL DEFAULT 'Media',
+
+  id_cliente INT NOT NULL,
+  id_tecnico INT DEFAULT NULL,
+  id_admin INT DEFAULT NULL,
+  id_estado INT NOT NULL,
+
+  FOREIGN KEY (id_cliente)
+    REFERENCES cliente(id_cliente)
+    ON UPDATE CASCADE,
+  FOREIGN KEY (id_tecnico)
+    REFERENCES tecnico(id_tecnico)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  FOREIGN KEY (id_admin)
+    REFERENCES admin(id_admin)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  FOREIGN KEY (id_estado)
+    REFERENCES estado(id_estado)
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- =========================================
+-- TABLA: comentario
+-- =========================================
+CREATE TABLE comentario (
+  id_comentario INT AUTO_INCREMENT PRIMARY KEY,
+  texto TEXT NOT NULL,
+  fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  id_ticket INT NOT NULL,
+  id_cliente INT DEFAULT NULL,
+  id_tecnico INT DEFAULT NULL,
+  id_admin INT DEFAULT NULL,
+
+  FOREIGN KEY (id_ticket)
+    REFERENCES ticket(id_ticket)
+    ON DELETE CASCADE,
+  FOREIGN KEY (id_cliente)
+    REFERENCES cliente(id_cliente)
+    ON DELETE SET NULL,
+  FOREIGN KEY (id_tecnico)
+    REFERENCES tecnico(id_tecnico)
+    ON DELETE SET NULL,
+  FOREIGN KEY (id_admin)
+    REFERENCES admin(id_admin)
+    ON DELETE SET NULL
+) ENGINE=InnoDB;
