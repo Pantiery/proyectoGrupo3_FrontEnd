@@ -1,99 +1,154 @@
 <!doctype html>
 <html lang="es" data-bs-theme="dark">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Checkout · TecTicket</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abrir Ticket · TecTicket</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="../../assets/dist/css/bootstrap.min.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Tu CSS -->
-    <link rel="stylesheet" href="/css/nuevoTicket.css">
-  </head>
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="/css/nuevoTicket.css">
+</head>
 
-  <body class="bg-body-tertiary">
+<body class="bg-body-tertiary">
 
-    <div class="container">
-      <main>
-        <div class="py-5 text-center">
-          <div class="mb-3 fs-1 fw-bold text-primary">B</div>
-          <h2>Checkout form</h2>
-          <p class="lead">
-            Below is an example form built entirely with Bootstrap’s form controls.
-          </p>
+  <div class="container">
+    <main>
+
+      <!-- CABECERA -->
+      <div class="py-5 text-center">
+        <h2>Abrir nuevo ticket</h2>
+        <p class="lead">
+          Rellena el formulario para reportar una incidencia informática.
+        </p>
+      </div>
+
+      <!-- ZONA FORM + LEYENDA -->
+      <div class="ticket-zone position-relative">
+
+        <!-- FORMULARIO (CENTRO REAL) -->
+        <div class="d-flex justify-content-center">
+          <div class="col-12 col-md-7 col-lg-5">
+            <div class="ticket-card">
+
+              <form class="needs-validation" novalidate method="post">
+
+                <div class="mb-3">
+                  <label class="form-label">Título del ticket</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Resumen breve del problema"
+                    required
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Descripción del problema</label>
+                  <textarea
+                    class="form-control"
+                    rows="5"
+                    placeholder="Describe el problema con el mayor detalle posible"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Tipo de problema</label>
+                  <select class="form-select" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Hardware</option>
+                    <option>Software</option>
+                    <option>Redes</option>
+                    <option>Accesos / permisos</option>
+                  </select>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">Prioridad</label>
+                  <select class="form-select prioridad-select" id="prioridad" required>
+                    <option value="">Selecciona la prioridad</option>
+                    <option value="absoluta">🔴 Absoluta</option>
+                    <option value="intermedia">🟠 Intermedia</option>
+                    <option value="basica">🟢 Básica</option>
+                  </select>
+                </div>
+
+                <button class="w-100 btn btn-primary btn-lg">
+                  Enviar ticket
+                </button>
+
+              </form>
+
+            </div>
+          </div>
         </div>
 
-        <div class="row g-5">
+        <!-- LEYENDA (DERECHA + ALINEADA ARRIBA) -->
+        <aside class="legend-right d-none d-lg-block">
+          <div class="ticket-card">
 
-          <!-- CART -->
-          <div class="col-md-5 col-lg-4 order-md-last">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-primary">Your cart</span>
-              <span class="badge bg-primary rounded-pill">3</span>
-            </h4>
+            <h5 class="card-title mb-4">¿Qué prioridad debo elegir?</h5>
 
-            <ul class="list-group mb-3">
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 class="my-0">Product name</h6>
-                  <small class="text-body-secondary">Brief description</small>
-                </div>
-                <span>$12</span>
+            <ul class="list-unstyled">
+
+              <li class="mb-4">
+                <strong class="text-danger">🔴 PRIORIDAD ABSOLUTA</strong><br>
+                <small>
+                  Selecciona esta opción cuando el problema te impide completamente
+                  realizar tu trabajo. No puedes continuar con tu actividad habitual
+                  y la incidencia necesita ser resuelta con la máxima urgencia.
+                </small>
               </li>
 
-              <li class="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
+              <li class="mb-4">
+                <strong class="text-warning">🟠 PRIORIDAD INTERMEDIA</strong><br>
+                <small>
+                  El problema afecta a tu trabajo y reduce tu productividad,
+                  pero todavía puedes seguir trabajando mediante soluciones
+                  temporales o con ciertas dificultades.
+                </small>
               </li>
+
+              <li>
+                <strong class="text-success">🟢 PRIORIDAD BÁSICA</strong><br>
+                <small>
+                  Puedes realizar tu trabajo con normalidad, pero el problema
+                  resulta molesto o incómodo. No requiere una resolución inmediata.
+                </small>
+              </li>
+
             </ul>
+
           </div>
+        </aside>
 
-          <!-- FORM -->
-          <div class="col-md-7 col-lg-8">
-            <h4 class="mb-3">Billing address</h4>
+      </div>
 
-            <form class="needs-validation" novalidate>
-              <div class="row g-3">
+    </main>
 
-                <div class="col-sm-6">
-                  <label class="form-label">First name</label>
-                  <input type="text" class="form-control" required>
-                </div>
+    <!-- FOOTER -->
+    <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+      <p class="mb-1">&copy; 2025 TecTicket</p>
+    </footer>
+  </div>
 
-                <div class="col-sm-6">
-                  <label class="form-label">Last name</label>
-                  <input type="text" class="form-control" required>
-                </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-                <div class="col-12">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control">
-                </div>
-              </div>
+  <!-- JS prioridad -->
+  <script>
+    const prioridadSelect = document.getElementById('prioridad');
+    prioridadSelect.addEventListener('change', function () {
+      this.classList.remove('prio-absoluta', 'prio-intermedia', 'prio-basica');
+      if (this.value === 'absoluta') this.classList.add('prio-absoluta');
+      if (this.value === 'intermedia') this.classList.add('prio-intermedia');
+      if (this.value === 'basica') this.classList.add('prio-basica');
+    });
+  </script>
 
-              <hr class="my-4">
-
-              <button class="w-100 btn btn-primary btn-lg" type="submit">
-                Continue to checkout
-              </button>
-            </form>
-          </div>
-        </div>
-      </main>
-
-      <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-        <p class="mb-1">&copy; 2025 TecTicket</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
-    </div>
-
-    <script src="../../assets/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/checkout.js"></script>
-  </body>
+</body>
 </html>
 
