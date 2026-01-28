@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
     const form = document.getElementById("loginForm");
     const alertBox = document.getElementById("loginAlert");
 
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
-       fetch("/proyectoGrupo3_BackEnd/public/login", {
+       fetch("/proyectoGrupo3_BackEnd/public/index.php/login", {
             method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -30,15 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
         alertBox.classList.add("d-none");
 
         if (data.rol === "CLIENTE") {
-            window.location.href = "/cliente/crear-ticket.html";
+            window.location.href = "../cliente/nuevoTicket.html";
         }
 
         if (data.rol === "ADMIN") {
-            window.location.href = "/admin/panel.html";
+            window.location.href = "../admin/panel.html";
         }
 
         if (data.rol === "TECNICO") {
-            window.location.href = "/tecnico/tickets.html";
+            window.location.href = "../tecnico/actualizar_estado_ticket.html";
         }
     })
         .catch(() => {
