@@ -16,12 +16,32 @@ body {
   max-width: 1200px;
 }
 
-/* CARD BASE (FORM + LEYENDA IGUALES) */
+/* Zona central */
+.ticket-zone {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Wrapper centrado */
+.ticket-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+/* FORMULARIO MÁS GRANDE */
+.ticket-form {
+  width: 520px;
+}
+
+/* Card base */
 .ticket-card {
   background-color: var(--bs-body-bg);
-  padding: 2rem;
-  border-radius: 0.75rem;
+  padding: 2.25rem;
+  border-radius: 1rem;
   border: 1px solid #495057;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.04);
 }
 
 /* Inputs */
@@ -30,6 +50,8 @@ body {
   background-color: var(--bs-body-bg);
   border: 1px solid #495057;
   color: #fff;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
 }
 
 .form-control::placeholder {
@@ -47,6 +69,9 @@ body {
 .btn-primary {
   background-color: var(--tec-orange);
   border-color: var(--tec-orange);
+  font-weight: 500;
+  padding: 0.75rem;
+  font-size: 1rem;
 }
 
 .btn-primary:hover {
@@ -54,14 +79,34 @@ body {
   border-color: var(--tec-orange-dark);
 }
 
-/* Prioridad colores */
-.prio-absoluta { border-color: #dc3545 !important; color: #dc3545; }
-.prio-intermedia { border-color: #ffc107 !important; color: #ffc107; }
-.prio-basica { border-color: #198754 !important; color: #198754; }
+/* Prioridades */
+.prio-absoluta {
+  border-color: #dc3545 !important;
+  color: #dc3545;
+}
+
+.prio-intermedia {
+  border-color: #ffc107 !important;
+  color: #ffc107;
+}
+
+.prio-basica {
+  border-color: #198754 !important;
+  color: #198754;
+}
 
 /* Leyenda */
+.legend-right {
+  width: 360px;
+}
+
+.legend-right .ticket-card {
+  background-color: #1b2127;
+}
+
 .card-title {
   color: var(--tec-orange);
+  font-weight: 600;
 }
 
 .ticket-card small {
@@ -73,12 +118,19 @@ body {
 footer {
   border-top: 1px solid #444;
 }
-/* Leyenda a la derecha sin afectar al centro */
-.legend-right {
-  position: absolute;
-  top: 180px;
-  right: 0;
-  width: 360px;
+
+/* Responsive */
+@media (max-width: 991px) {
+  .ticket-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .legend-right {
+    width: 100%;
+  }
+
+  .ticket-form {
+    width: 100%;
+  }
 }
-
-

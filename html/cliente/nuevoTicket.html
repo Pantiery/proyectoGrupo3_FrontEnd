@@ -25,20 +25,23 @@
         </p>
       </div>
 
-      <!-- ZONA FORM + LEYENDA -->
-      <div class="ticket-zone position-relative">
+      <!-- ZONA CENTRAL -->
+      <div class="ticket-zone">
 
-        <!-- FORMULARIO (CENTRO REAL) -->
-        <div class="d-flex justify-content-center">
-          <div class="col-12 col-md-7 col-lg-5">
+        <!-- BLOQUE CENTRADO (FORM + LEYENDA) -->
+        <div class="ticket-wrapper">
+
+          <!-- FORMULARIO -->
+          <div class="ticket-form">
             <div class="ticket-card">
 
-              <form class="needs-validation" novalidate method="post">
+              <form id="ticketForm">
 
                 <div class="mb-3">
                   <label class="form-label">Título del ticket</label>
                   <input
                     type="text"
+                    name="titulo"
                     class="form-control"
                     placeholder="Resumen breve del problema"
                     required
@@ -48,6 +51,7 @@
                 <div class="mb-3">
                   <label class="form-label">Descripción del problema</label>
                   <textarea
+                    name="descripcion"
                     class="form-control"
                     rows="5"
                     placeholder="Describe el problema con el mayor detalle posible"
@@ -57,7 +61,7 @@
 
                 <div class="mb-3">
                   <label class="form-label">Tipo de problema</label>
-                  <select class="form-select" required>
+                  <select name="tipo" class="form-select" required>
                     <option value="">Selecciona una opción</option>
                     <option>Hardware</option>
                     <option>Software</option>
@@ -68,7 +72,12 @@
 
                 <div class="mb-4">
                   <label class="form-label">Prioridad</label>
-                  <select class="form-select prioridad-select" id="prioridad" required>
+                  <select
+                    name="prioridad"
+                    id="prioridad"
+                    class="form-select"
+                    required
+                  >
                     <option value="">Selecciona la prioridad</option>
                     <option value="absoluta">🔴 Absoluta</option>
                     <option value="intermedia">🟠 Intermedia</option>
@@ -84,47 +93,47 @@
 
             </div>
           </div>
+
+          <!-- LEYENDA -->
+          <aside class="legend-right">
+            <div class="ticket-card">
+
+              <h5 class="card-title mb-4">
+                ¿Qué prioridad debo elegir?
+              </h5>
+
+              <ul class="list-unstyled">
+
+                <li class="mb-4">
+                  <strong class="text-danger">🔴 PRIORIDAD ABSOLUTA</strong><br>
+                  <small>
+                    El problema te impide completamente realizar tu trabajo.
+                    Necesita resolución inmediata.
+                  </small>
+                </li>
+
+                <li class="mb-4">
+                  <strong class="text-warning">🟠 PRIORIDAD INTERMEDIA</strong><br>
+                  <small>
+                    Afecta a tu trabajo, pero puedes continuar con soluciones
+                    temporales o ciertas dificultades.
+                  </small>
+                </li>
+
+                <li>
+                  <strong class="text-success">🟢 PRIORIDAD BÁSICA</strong><br>
+                  <small>
+                    No impide trabajar, pero resulta molesto y no requiere
+                    una resolución urgente.
+                  </small>
+                </li>
+
+              </ul>
+
+            </div>
+          </aside>
+
         </div>
-
-        <!-- LEYENDA (DERECHA + ALINEADA ARRIBA) -->
-        <aside class="legend-right d-none d-lg-block">
-          <div class="ticket-card">
-
-            <h5 class="card-title mb-4">¿Qué prioridad debo elegir?</h5>
-
-            <ul class="list-unstyled">
-
-              <li class="mb-4">
-                <strong class="text-danger">🔴 PRIORIDAD ABSOLUTA</strong><br>
-                <small>
-                  Selecciona esta opción cuando el problema te impide completamente
-                  realizar tu trabajo. No puedes continuar con tu actividad habitual
-                  y la incidencia necesita ser resuelta con la máxima urgencia.
-                </small>
-              </li>
-
-              <li class="mb-4">
-                <strong class="text-warning">🟠 PRIORIDAD INTERMEDIA</strong><br>
-                <small>
-                  El problema afecta a tu trabajo y reduce tu productividad,
-                  pero todavía puedes seguir trabajando mediante soluciones
-                  temporales o con ciertas dificultades.
-                </small>
-              </li>
-
-              <li>
-                <strong class="text-success">🟢 PRIORIDAD BÁSICA</strong><br>
-                <small>
-                  Puedes realizar tu trabajo con normalidad, pero el problema
-                  resulta molesto o incómodo. No requiere una resolución inmediata.
-                </small>
-              </li>
-
-            </ul>
-
-          </div>
-        </aside>
-
       </div>
 
     </main>
@@ -138,17 +147,8 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- JS prioridad -->
-  <script>
-    const prioridadSelect = document.getElementById('prioridad');
-    prioridadSelect.addEventListener('change', function () {
-      this.classList.remove('prio-absoluta', 'prio-intermedia', 'prio-basica');
-      if (this.value === 'absoluta') this.classList.add('prio-absoluta');
-      if (this.value === 'intermedia') this.classList.add('prio-intermedia');
-      if (this.value === 'basica') this.classList.add('prio-basica');
-    });
-  </script>
+  <!-- JS -->
+  <script src="/js/nuevoTicket.js"></script>
 
 </body>
 </html>
-
