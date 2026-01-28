@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>Panel de Tickets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body class="bg-dark text-light">
+
+<div class="container py-5">
+
+  <!-- TÍTULO -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">🎫 Panel de Tickets</h1>
+    <p class="text-muted">Gestión y seguimiento de incidencias</p>
+  </div>
+
+  <!-- PANEL -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+
+      <div class="list-group list-group-flush border rounded-3 shadow-sm">
+
+        <!-- Ticket 1 -->
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3 ticket-prioritario">
+          <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center flex-shrink-0 icon-circle">
+            !
+          </div>
+
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">Ticket #1023 - Error servidor</h6>
+              <p class="mb-0 opacity-75">
+                El servidor principal no responde.
+              </p>
+            </div>
+
+            <!-- Tiempo + acciones -->
+            <div class="d-flex align-items-center gap-2 text-end">
+              <small class="opacity-50 text-nowrap">now</small>
+
+              <button class="btn btn-sm btn-outline-secondary border-0 p-1"
+                      title="Actualizar">
+                <i class="bi bi-arrow-clockwise"></i>
+              </button>
+
+              <button class="btn btn-sm btn-outline-danger border-0 p-1"
+                      title="Eliminar">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Ticket 2 -->
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3 ticket-normal">
+          <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center flex-shrink-0 icon-circle">
+            i
+          </div>
+
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">Ticket #1024 - Problema impresora</h6>
+              <p class="mb-0 opacity-75">
+                La impresora no imprime.
+              </p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 text-end">
+              <small class="opacity-50 text-nowrap">3d</small>
+
+              <button class="btn btn-sm btn-outline-secondary border-0 p-1"
+                      title="Actualizar">
+                <i class="bi bi-arrow-clockwise"></i>
+              </button>
+
+              <button class="btn btn-sm btn-outline-danger border-0 p-1"
+                      title="Eliminar">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Ticket 3 -->
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3 ticket-normal">
+          <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center flex-shrink-0 icon-circle">
+            i
+          </div>
+
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">Ticket #1025 - Instalación software</h6>
+              <p class="mb-0 opacity-75">
+                Solicitud de instalación de software contable.
+              </p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 text-end">
+              <small class="opacity-50 text-nowrap">1w</small>
+
+              <button class="btn btn-sm btn-outline-secondary border-0 p-1"
+                      title="Actualizar">
+                <i class="bi bi-arrow-clockwise"></i>
+              </button>
+
+              <button class="btn btn-sm btn-outline-danger border-0 p-1"
+                      title="Eliminar">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
