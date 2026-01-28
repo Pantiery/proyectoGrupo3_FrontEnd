@@ -15,25 +15,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // 📤 Envío del formulario
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    let prioridad = form.prioridad.value;
+
+    if (prioridad === "absoluta") prioridad = "Alta";
+    if (prioridad === "intermedia") prioridad = "Media";
+    if (prioridad === "basica") prioridad = "Baja";
 
     const datos = {
       titulo: form.titulo.value,
       descripcion: form.descripcion.value,
-      tipo: form.tipo.value,
-      prioridad: form.prioridad.value
+      prioridad: prioridad
     };
 
-    fetch('/BackEnd/crear_ticket.php', {
+    fetch('/proyectoGrupo3_BackEnd/public/index.php/tickets', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: "include",
       body: JSON.stringify(datos)
     })
     .then(response => response.json())
     .then(data => {
-      alert(data.mensaje);
-      form.reset();
+    if (!data.ok) {
+      alert(data.error || 'Error al crear el ticket');
+      return;
+    }
+
+    alert('✅ Ticket creado correctamente');
+    form.reset();
+
       prioridadSelect.classList.remove('prio-absoluta', 'prio-intermedia', 'prio-basica');
     })
     .catch(error => {
@@ -42,4 +53,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+      // 🚪 Cerrar sesión
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", async () => {
+        try {
+          await fetch(
+            "/proyectoGrupo3_BackEnd/public/index.php/logout",
+            {
+             method: "POST",
+             credentials: "include"
+           }
+         );
+
+      // Volver al login
+      window.location.href = "../Logins/Login.html";
+
+        } catch (e) {
+          alert("Error al cerrar sesión");
+        }
+     });
+  }
 });
