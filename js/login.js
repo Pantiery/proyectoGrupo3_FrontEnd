@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({
             correo: email,
             contrasena: password
