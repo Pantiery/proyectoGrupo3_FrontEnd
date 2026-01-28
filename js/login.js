@@ -39,8 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (data.rol === "TECNICO") {
-            window.location.href = "../tecnico/actualizar_estado_ticket.html";
-        }
+  window.location.href =
+    "/proyectoGrupo3_FrontEnd/html/tecnico/actualizar_estado_ticket.html";
+}
+
     })
         .catch(() => {
             alertBox.classList.remove("d-none");
