@@ -1,0 +1,115 @@
+:root {
+    --tec-orange: #E38B2D;
+    --tec-orange-dark: #CC7A20;
+
+    --tec-gray-dark: #2F2F2F;
+    --tec-gray: #5A5A5A;
+    --tec-gray-light: #EDEDED;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(
+        135deg,
+        var(--tec-gray-dark),
+        #1f1f1f
+    );
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--tec-gray-light);
+    max-width: 480px;
+    padding: 40px 30px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card h1 {
+    color: var(--tec-orange);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    color: var(--tec-gray-dark);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: var(--tec-gray);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px auto 15px;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+
+    color: var(--tec-gray-light);
+    background-color: var(--tec-gray-dark);
+
+    border: 1px solid var(--tec-gray);
+    border-radius: 8px;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.15s ease;
+}
+
+.back-button:hover {
+    background-color: var(--tec-orange);
+    color: #ffffff;
+    border-color: var(--tec-orange-dark);
+    transform: translateY(-1px);
+}
+
+.back-button:active {
+    transform: translateY(0);
+}
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--tec-orange);
+    margin: 0 auto 20px auto;
+    border-radius: 2px;
+}
+
+.footer-text {
+    font-size: 0.85rem;
+    color: var(--tec-gray);
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    .card h1 {
+        font-size: 1.6rem;
+    }
+}
+
