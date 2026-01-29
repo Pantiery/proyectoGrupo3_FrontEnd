@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (data.rol === "ADMIN") {
-            window.location.href = "../admin/panel.html";
+            window.location.href = "/proyectoGrupo3_FrontEnd/html/admin/PanelAdmin.html";
         }
 
         if (data.rol === "TECNICO") {
