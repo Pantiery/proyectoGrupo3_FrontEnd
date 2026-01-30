@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = "../Logins/Login.html";
 
         } catch (e) {
-          
+          //alert("Error al cerrar sesión");
         }
      });
   }
