@@ -53,3 +53,20 @@ body {
     color: var(--tec-orange-dark);
     text-decoration: underline;
 }
+
+.btn-regresar {
+    position: absolute;
+    top: 38%;              /* ⬅️ antes estaba en 50% */
+    right: 0;
+    transform: translate(120%, -50%);
+
+    color: #adb5bd;
+    border-color: #495057;
+    background-color: transparent;
+}
+
+.btn-regresar:hover {
+    color: #fff;
+    border-color: #adb5bd;
+}
+
