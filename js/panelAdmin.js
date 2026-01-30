@@ -128,15 +128,18 @@ function validarEstado(id) {
   ).then(() => cargarTickets());
 }
 
-// 🗑️ Eliminar ticket
 function eliminarTicket(id) {
   if (!confirm("¿Eliminar este ticket?")) return;
 
-  fetch(
-    `http://localhost/proyectoGrupo3_BackEnd/public/index.php/tickets/${id}`,
-    {
-      method: "DELETE",
-      credentials: "include"
-    }
-  ).then(() => cargarTickets());
+  fetch("http://localhost/proyectoGrupo3_BackEnd/public/index.php/tickets", {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      id_ticket: id
+    })
+  }).then(() => cargarTickets());
 }
+

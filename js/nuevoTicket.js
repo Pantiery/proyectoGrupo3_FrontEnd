@@ -37,20 +37,28 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(response => response.json())
     .then(data => {
-    if (!data.ok) {
-      alert(data.error || 'Error al crear el ticket');
-      return;
-    }
+  if (!data.ok) return;
 
-    alert('✅ Ticket creado correctamente');
-    form.reset();
+  const msg = document.getElementById("ticketMsg");
+  msg.classList.remove("d-none");
 
-      prioridadSelect.classList.remove('prio-absoluta', 'prio-intermedia', 'prio-basica');
-    })
+  form.reset();
+  prioridadSelect.classList.remove(
+    'prio-absoluta',
+    'prio-intermedia',
+    'prio-basica'
+  );
+
+  // Ocultar el mensaje tras 3 segundos (opcional)
+  setTimeout(() => {
+    msg.classList.add("d-none");
+  }, 3000);
+})
+
     .catch(error => {
-      console.error('Error:', error);
-      alert('Error al enviar el ticket');
-    });
+  console.error('Error:', error);
+});
+
   });
 
       // 🚪 Cerrar sesión
@@ -71,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = "../Logins/Login.html";
 
         } catch (e) {
-          alert("Error al cerrar sesión");
+          //alert("Error al cerrar sesión");
         }
      });
   }
